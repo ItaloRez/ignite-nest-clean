@@ -24,24 +24,24 @@ describe('Fetch Question Comments Use Case', () => {
 
     inMemoryStudentsRepository.items.push(student)
 
-    const commment1 = makeQuestionComment({
+    const comment1 = makeQuestionComment({
       questionId: new UniqueEntityID('question-1'),
       authorId: student.id,
     })
 
-    const commment2 = makeQuestionComment({
+    const comment2 = makeQuestionComment({
       questionId: new UniqueEntityID('question-1'),
       authorId: student.id,
     })
 
-    const commment3 = makeQuestionComment({
+    const comment3 = makeQuestionComment({
       questionId: new UniqueEntityID('question-1'),
       authorId: student.id,
     })
 
-    await inMemoryQuestionCommentsCommentsRepository.create(commment1)
-    await inMemoryQuestionCommentsCommentsRepository.create(commment2)
-    await inMemoryQuestionCommentsCommentsRepository.create(commment3)
+    await inMemoryQuestionCommentsCommentsRepository.create(comment1)
+    await inMemoryQuestionCommentsCommentsRepository.create(comment2)
+    await inMemoryQuestionCommentsCommentsRepository.create(comment3)
 
     const result = await sut.execute({
       questionId: 'question-1',
@@ -54,15 +54,15 @@ describe('Fetch Question Comments Use Case', () => {
       expect.arrayContaining([
         expect.objectContaining({
           author: 'John Doe',
-          commentId: commment1.id,
+          commentId: comment1.id,
         }),
         expect.objectContaining({
           author: 'John Doe',
-          commentId: commment2.id,
+          commentId: comment2.id,
         }),
         expect.objectContaining({
           author: 'John Doe',
-          commentId: commment3.id,
+          commentId: comment3.id,
         }),
       ]),
     )
