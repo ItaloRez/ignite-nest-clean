@@ -10,7 +10,7 @@ import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { PrismaAttachmentMapper } from '@/infra/database/prisma/mappers/prisma-attachment-mapper'
 
 export function makeAttachment(
-  override?: Partial<AttachmentProps>,
+  override: Partial<AttachmentProps> = {},
   id?: UniqueEntityID,
 ) {
   const attachment = Attachment.create(
